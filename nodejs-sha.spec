@@ -3,12 +3,12 @@
 
 %{?nodejs_find_provides_and_requires}
 
-%global commit 253e2df0d783453c4892d4bc32b8aec5a5a708e6
+%global commit 07d43b5ebf7b7ddb83e44b594005097e21e43702
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 Name:           %{?scl_prefix}nodejs-sha
-Version:        1.2.1
-Release:        1.1.sc1%{?dist}
+Version:        2.0.1
+Release:        2.1%{?dist}
 Summary:        Check and get file hashes
 BuildArch:      noarch
 ExclusiveArch: %{nodejs_arches} noarch
@@ -19,7 +19,7 @@ URL:            https://github.com/ForbesLindesay/sha
 Source0:        http://registry.npmjs.org/sha/-/sha-%{version}.tgz
 # the npm tarball doesn't contain the tests, so we grab it from github instead
 # oh, and now it seems to be a version behind npm.  swell.
-Source1:        https://github.com/ForbesLindesay/sha/archive/%{commit}/%{pkg_name}-%{version}-%{shortcommit}.tar.gz
+Source1:        https://github.com/ForbesLindesay/sha/archive/%{commit}/sha-%{version}-%{shortcommit}.tar.gz
 BuildRoot:      %{_tmppath}/%{pkg_name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  %{?scl_prefix}nodejs-devel
@@ -70,6 +70,9 @@ rm -rf %buildroot
 %doc README.md LICENSE
 
 %changelog
+* Fri Nov 27 2015 Tomas Hrcka <thrcka@redhat.com> - 2.0.1-2.1
+- Rebase to latest upstream
+
 * Fri Nov 08 2013 Tomas Hrcka <thrcka@redhat.com> - 1.2.1-1.1
 - Software collections support
 
